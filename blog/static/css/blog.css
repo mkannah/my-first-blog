@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text|Playfair+Display');
+
+h1 a {
+    color: black;
+    font-family: 'Playfair Display', serif;
+    font-size: 100px;
+}
+
+div h1, h2, a, p{
+    text-align: center;
+}
+
+body {
+    padding-left: 15px;
+}
+
+p {
+    font-family: Crimson Text, serif;
+    font-size: x-large;
+}
+
+h2 a {
+    font-family: Crimson Text, serif;
+    font-size: xx-large;
+}
+
+#date{
+    font-size: larger;
+    color: rgba(32, 62, 102, 0.31);
+}
