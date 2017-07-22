@@ -7,11 +7,12 @@ h1 a {
 }
 
 div h1, h2, a, p{
+    font-family: Crimson Text, serif;
     text-align: center;
 }
 
 body {
-    padding-left: 15px;
+    padding: 25px;
 }
 
 p {
