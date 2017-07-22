@@ -46,3 +46,7 @@ h1 a, a:link, a:visited, a:active{
 h1 a:hover {
     color: rgba(66, 83, 102, 0.32);
 }
+
+div span {
+    text-align: center;
+}
