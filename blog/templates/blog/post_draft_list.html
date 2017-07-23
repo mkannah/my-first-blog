@@ -1,11 +1,15 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    {% for post in posts %}
-        <div class="post">
-            <p class="date">created: {{ post.created_date }}</p>
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a> </h1>
-            <p>{{ post.text }}</p>
-        </div>
-    {% endfor %}
+    {% if posts %}
+        {% for post in posts %}
+            <div class="responsive jumbotron">
+                <p class="date">created: {{ post.created_date }}</p>
+                <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a> </h2>
+                <p>{{ post.text }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p><h1>Great! No unpublished posts.</h1></p>
+    {% endif %}
 {% endblock %}

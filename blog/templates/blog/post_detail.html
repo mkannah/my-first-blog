@@ -13,7 +13,28 @@
                 <p id="date">{{ post.published_date }}</p>
             </div>
         {% else %}
-            <div align="center"><a href="{% url 'post_publish' pk=post.pk %}" class="btn btn-default">Publish</a></div>
+            <h1><a href="{% url 'post_publish' pk=post.pk %}" class="btn btn-default">publish</a></h1>
         {% endif %}
     </div>
+    <hr class="style14">
+    <h1><a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">add comment</a></h1>
+    {% for comment in post.comments.all %}
+        {% if user.is_authenticated or comment.approved_comment %}
+            <div align="center" class="comment">
+                <h4><strong>{{ comment.author }}</strong></h4>
+                <h6><div class="date">
+                    {{ comment.created_date }}
+                    {% if not comment.approved_comment %}
+                        <br />
+                        <br />
+                        <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                        <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+                    {% endif %}
+                </div></h6>
+                <h5>{{ comment.text|linebreaksbr }}</h5>
+            </div>
+        {% endif %}
+    {% empty %}
+        <p>No comments here yet.</p>
+    {% endfor %}
 {% endblock %}
