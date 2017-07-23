@@ -19,21 +19,21 @@
     <hr class="style14">
     <h1><a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">add comment</a></h1>
     {% for comment in post.comments.all %}
-        {% if user.is_authenticated or comment.approved_comment %}
             <div align="center" class="comment">
                 <h4><strong>{{ comment.author }}</strong></h4>
                 <h6><div class="date">
                     {{ comment.created_date }}
+                {% if user.is_authenticated or comment.approved_comment %}
                     {% if not comment.approved_comment %}
                         <br />
                         <br />
                         <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
                         <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
                     {% endif %}
+                {% endif %}
                 </div></h6>
                 <h5>{{ comment.text|linebreaksbr }}</h5>
             </div>
-        {% endif %}
     {% empty %}
         <p>No comments here yet.</p>
     {% endfor %}
